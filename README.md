@@ -20,7 +20,7 @@ Instructions to run the model:
 The current citation for the paper-
 ```
 @misc{CLICMLAc42:online,
-author = {},
+author = {Schug. Simon, Benzing. Frederik, Steger. Angelika},
 title = {CL-ICML - Accepted Papers},
 howpublished = {\url{https://sites.google.com/view/cl-icml/accepted-papers?authuser=0}},
 month = {},
