@@ -143,6 +143,7 @@ def calc_accuracy(model, test_images, test_labels):
 	output = model(test_images)
 	return (output.argmax(dim=1).long() == test_labels).float().mean()
 
+# Intitializing the variables to store the mean accuracy
 mean_accuracy = np.zeros((param['n_runs']))
 mean_task_acc = np.zeros((param['n_runs'], param['n_tasks']))
 for run in range(param['n_runs']):
@@ -155,15 +156,20 @@ for run in range(param['n_runs']):
 	print ("Done")
 	for task in range(param['n_tasks']):
 		print("Starting training on task {} {} ....".format(task + 1, taskID[task]))
+		# Splitting the training data
 		train_data_tensor, train_label_tensor = reformat_data(taskID[task], train_data, train_label)
 		running_loss = 0.0
+		# Iterating over the number of epochs
 		for epochs in range(param['n_epochs']):
 			count = 0.0
+			# Iterating over the training set
 			for input_sample in tqdm(range(train_data_tensor.shape[0])):
+				# Compute loss and accuracy
 				loss, output = train_model(model, train_data_tensor[input_sample], train_label_tensor[input_sample])
 				count += (output.argmax(dim=1).long() == train_label_tensor[input_sample]).float().mean()
 				running_loss += loss.item()
 
+				# Printing the results
 				if input_sample % 20 == 19:  # print every 20 mini-batches
 					print('[%d, %5d] loss: %.3f  accuracy: %.2f' %
 					      (epochs + 1, input_sample + 1, running_loss / 20, count / input_sample))
@@ -171,7 +177,7 @@ for run in range(param['n_runs']):
 
 			print("The training accuracy in this epoch --> {}".format(count / train_data_tensor.shape[0]))
 
-
+		# Inference over the subtasks learnt till now
 		for subtask in range(task + 1):
 			print("Testing on subtask ---> {}".format(subtask))
 			test_data_tensor, test_label_tensor = reformat_data(taskID[subtask], test_data, test_label)

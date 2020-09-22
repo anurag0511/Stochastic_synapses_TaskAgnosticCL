@@ -114,7 +114,7 @@ def train_model(model, train_image, label):
 	for name, param in model.named_parameters():
 		if name.__contains__('m'):
 			gradient_lookup_list.append(param.grad)
-			param.grad = torch.mul(param.grad, (1-probability_lookup_list[int(name[1]) - 1].data))
+			param.grad = torch.mul(param.grad, (1 - probability_lookup_list[int(name[1]) - 1].data))
 	# Update the weights
 	optimizer.step()
 
@@ -122,9 +122,9 @@ def train_model(model, train_image, label):
 	for name, param in model.named_parameters():
 		if name.__contains__('p'):
 			param.data = update_probabilities(gradient_lookup_list[int(name[1]) - 1].data, param.data)
-			print ((param.data==probability_lookup_list[int(name[1])-1]).sum(), "The similar element")
+			print((param.data == probability_lookup_list[int(name[1]) - 1]).sum(), "The similar element")
 			probability_lookup_list[int(name[1]) - 1] = param.data
-			# print(torch.max(param.d   ata), torch.mean(param.data), "After update")
+		# print(torch.max(param.d   ata), torch.mean(param.data), "After update")
 	return loss, output
 
 
