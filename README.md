@@ -15,7 +15,7 @@ Instructions to run the model:
 3. Run either the `modified_network.py` or `stochastic_network.py` using 
 `python3 stochastic_network.py`. 
 
-* Note - For understanding the parameters please read the paper [here](https://drive.google.com/file/d/1ZQg7Lb8IoVdHet3AwQFWTvg5QBUsbZJX/view?usp=sharing)
+* Note - For understanding the parameters please read the paper available [here](https://drive.google.com/file/d/1ZQg7Lb8IoVdHet3AwQFWTvg5QBUsbZJX/view?usp=sharing)
 
 The current citation for the paper-
 ```
