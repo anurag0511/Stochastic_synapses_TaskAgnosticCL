@@ -21,7 +21,7 @@ The current citation for the paper-
 ```
 @misc{CLICMLAc42:online,
 author = {Schug. Simon, Benzing. Frederik, Steger. Angelika},
-title = {CL-ICML - Accepted Papers},
+title = {Task Agnostic Continual Learning via Stochastic Synapses},
 howpublished = {\url{https://sites.google.com/view/cl-icml/accepted-papers?authuser=0}},
 month = {},
 year = {},
